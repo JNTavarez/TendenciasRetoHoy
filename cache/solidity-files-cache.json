@@ -2,7 +2,7 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\GitHub\\TendenciasRetoHoy\\contracts\\GeneratedVerifier.sol": {
-      "lastModificationDate": 1750427166152,
+      "lastModificationDate": 1750443138752,
       "contentHash": "108c37f2ca197936776ee3d897ddfce1",
       "sourceName": "contracts/GeneratedVerifier.sol",
       "solcConfig": {
@@ -38,8 +38,8 @@
       ]
     },
     "C:\\GitHub\\TendenciasRetoHoy\\contracts\\Verifier.sol": {
-      "lastModificationDate": 1750427133313,
-      "contentHash": "658ca13eceb18c5aa878eeb3fc18aeb6",
+      "lastModificationDate": 1750443138753,
+      "contentHash": "60336108f56184464727727889e29647",
       "sourceName": "contracts/Verifier.sol",
       "solcConfig": {
         "version": "0.8.17",
@@ -75,8 +75,8 @@
       ]
     },
     "C:\\GitHub\\TendenciasRetoHoy\\contracts\\VotingSystem.sol": {
-      "lastModificationDate": 1750427938794,
-      "contentHash": "ac33cfc4445910b1c477b647f136eb84",
+      "lastModificationDate": 1750445231397,
+      "contentHash": "9d4372016846a0277228b27e8466bfda",
       "sourceName": "contracts/VotingSystem.sol",
       "solcConfig": {
         "version": "0.8.17",
@@ -114,7 +114,7 @@
       ]
     },
     "C:\\GitHub\\TendenciasRetoHoy\\node_modules\\@openzeppelin\\contracts\\access\\Ownable.sol": {
-      "lastModificationDate": 1750263735028,
+      "lastModificationDate": 1750443249862,
       "contentHash": "5a20b2cad87ddb61c7a3a6af21289e28",
       "sourceName": "@openzeppelin/contracts/access/Ownable.sol",
       "solcConfig": {
@@ -152,7 +152,7 @@
       ]
     },
     "C:\\GitHub\\TendenciasRetoHoy\\node_modules\\@openzeppelin\\contracts\\utils\\Context.sol": {
-      "lastModificationDate": 1750263734792,
+      "lastModificationDate": 1750443247398,
       "contentHash": "f07feb4a44b1a4872370da5aa70e8e46",
       "sourceName": "@openzeppelin/contracts/utils/Context.sol",
       "solcConfig": {
@@ -188,7 +188,7 @@
       ]
     },
     "C:\\GitHub\\TendenciasRetoHoy\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\ERC20.sol": {
-      "lastModificationDate": 1750263734869,
+      "lastModificationDate": 1750443247995,
       "contentHash": "3ae5166c6827a9cf1a7a462d1632b464",
       "sourceName": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
       "solcConfig": {
@@ -227,44 +227,8 @@
         "ERC20"
       ]
     },
-    "C:\\GitHub\\TendenciasRetoHoy\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\IERC20.sol": {
-      "lastModificationDate": 1750263734976,
-      "contentHash": "df36f7051335cd1e748b1b6463b7fdd3",
-      "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
-      "solcConfig": {
-        "version": "0.8.17",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "viaIR": true,
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IERC20"
-      ]
-    },
     "C:\\GitHub\\TendenciasRetoHoy\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\extensions\\IERC20Metadata.sol": {
-      "lastModificationDate": 1750263734977,
+      "lastModificationDate": 1750443249304,
       "contentHash": "909ab67fc5c25033fe6cd364f8c056f9",
       "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
       "solcConfig": {
@@ -301,8 +265,44 @@
         "IERC20Metadata"
       ]
     },
+    "C:\\GitHub\\TendenciasRetoHoy\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\IERC20.sol": {
+      "lastModificationDate": 1750443249299,
+      "contentHash": "df36f7051335cd1e748b1b6463b7fdd3",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "viaIR": true,
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC20"
+      ]
+    },
     "C:\\GitHub\\TendenciasRetoHoy\\contracts\\VotingToken.sol": {
-      "lastModificationDate": 1750263056499,
+      "lastModificationDate": 1750443138754,
       "contentHash": "a9d06ee264eaa28cfec20aef7d1cd424",
       "sourceName": "contracts/VotingToken.sol",
       "solcConfig": {
@@ -341,7 +341,7 @@
       ]
     },
     "C:\\GitHub\\TendenciasRetoHoy\\contracts\\VotingSystem_WithToken.sol": {
-      "lastModificationDate": 1750263056499,
+      "lastModificationDate": 1750443138754,
       "contentHash": "a70d3082cb90c65aea8521f94221a3a5",
       "sourceName": "contracts/VotingSystem_WithToken.sol",
       "solcConfig": {
@@ -380,7 +380,7 @@
       ]
     },
     "C:\\GitHub\\TendenciasRetoHoy\\node_modules\\@openzeppelin\\contracts\\security\\ReentrancyGuard.sol": {
-      "lastModificationDate": 1750263735035,
+      "lastModificationDate": 1750443249931,
       "contentHash": "1535f8c0c68463f8c1b5239f7584e71f",
       "sourceName": "@openzeppelin/contracts/security/ReentrancyGuard.sol",
       "solcConfig": {

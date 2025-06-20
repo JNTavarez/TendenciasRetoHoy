@@ -1,31 +1,31 @@
-// Script to deploy the VotingSystem contract to the blockchain
-const { ethers } = require("hardhat");
+// Script to deploy VotingToken and VotingSystem_WithToken contracts
+const { ethers, network } = require("hardhat");
 const fs = require("fs");
 const path = require("path");
 
 async function main() {
-  console.log("Starting deployment of VotingSystem contract...");
+  console.log("Starting deployment of VotingToken and VotingSystem_WithToken contracts...");
 
   // 1. Get contract factories
-  const VotingSystem = await ethers.getContractFactory("contracts/VotingSystem.sol:VotingSystem");
-  const Verifier = await ethers.getContractFactory("contracts/Verifier.sol:Verifier");
+  const VotingToken = await ethers.getContractFactory("contracts/VotingToken.sol:VotingToken");
+  const VotingSystem_WithToken = await ethers.getContractFactory("contracts/VotingSystem_WithToken.sol:VotingSystem_WithToken");
 
-  // 2. Deploy VotingSystem
-  console.log("Deploying VotingSystem...");
-  const votingSystem = await VotingSystem.deploy(); // Constructor does not take arguments
+  // 2. Deploy VotingToken
+  console.log("Deploying VotingToken...");
+  const votingToken = await VotingToken.deploy();
+  await votingToken.deployed();
+  console.log("VotingToken contract deployed to:", votingToken.address);
+
+  // 3. Deploy VotingSystem_WithToken
+  console.log("Deploying VotingSystem_WithToken...");
+  const votingSystem = await VotingSystem_WithToken.deploy(votingToken.address);
   await votingSystem.deployed();
-  console.log("VotingSystem contract deployed to:", votingSystem.address);
-
-  // 3. Deploy Verifier
-  console.log("Deploying Verifier contract...");
-  const verifier = await Verifier.deploy(); // Assumes Verifier constructor is parameterless or handles VK internally
-  await verifier.deployed();
-  console.log("Verifier contract deployed to:", verifier.address);
+  console.log("VotingSystem_WithToken contract deployed to:", votingSystem.address);
 
   // 4. Save contract addresses to a file
   const deploymentInfo = {
     votingSystemAddress: votingSystem.address,
-    verifierAddress: verifier.address, // Add verifier address
+    votingTokenAddress: votingToken.address,
     deploymentTime: new Date().toISOString(),
     network: network.name,
     deployer: (await ethers.getSigners())[0].address
@@ -36,39 +36,51 @@ async function main() {
 
   // 5. Update the .env file with contract addresses
   try {
-    const envPath = path.join(__dirname, "../.env");
+    const envPath = path.join(__dirname, "../client/.env");
     let envContent = "";
     if (fs.existsSync(envPath)) {
       envContent = fs.readFileSync(envPath, "utf8");
     }
 
-    // Update REACT_APP_CONTRACT_ADDRESS
-    const envVariable = "REACT_APP_CONTRACT_ADDRESS";
-    if (envContent.includes(envVariable)) {
-      envContent = envContent.replace(new RegExp(`^${envVariable}=.*`, "m"), `${envVariable}=${votingSystem.address}`);
-    } else {
-      envContent += `\n${envVariable}=${votingSystem.address}`;
+    const lines = envContent.split('\n');
+    const newLines = [];
+
+    const variablesToUpdate = {
+        'REACT_APP_CONTRACT_ADDRESS': votingSystem.address,
+        'REACT_APP_TOKEN_ADDRESS': votingToken.address,
+        'REACT_APP_VOTING_ADDRESS': votingSystem.address // Assuming this is the main contract address
+    };
+
+    const existingKeys = new Set();
+    
+    // Update or keep existing lines
+    for (const line of lines) {
+        if (line.trim() === '') continue;
+        const [key] = line.split('=');
+        if (variablesToUpdate[key]) {
+            newLines.push(`${key}=${variablesToUpdate[key]}`);
+            existingKeys.add(key);
+        } else {
+            newLines.push(line);
+        }
     }
 
-    // Update REACT_APP_VERIFIER_ADDRESS
-    if (envContent.includes("REACT_APP_VERIFIER_ADDRESS=")) {
-      envContent = envContent.replace(/REACT_APP_VERIFIER_ADDRESS=.*/, `REACT_APP_VERIFIER_ADDRESS=${verifier.address}`);
-    } else {
-      envContent += `\nREACT_APP_VERIFIER_ADDRESS=${verifier.address}`;
+    // Add new variables if they don't exist in the file
+    for (const key in variablesToUpdate) {
+        if (!existingKeys.has(key)) {
+            newLines.push(`${key}=${variablesToUpdate[key]}`);
+        }
     }
 
-    // Clean up potential duplicate newlines and trim
-    envContent = envContent.split('\n').filter(line => line.trim() !== '').join('\n') + '\n';
+    fs.writeFileSync(envPath, newLines.join('\n'));
+    console.log(".env file updated with new contract addresses.");
 
-    fs.writeFileSync(envPath, envContent.trim());
-    console.log(".env file updated with VotingSystem and Verifier contract addresses");
   } catch (error) {
     console.error("Failed to update .env file:", error);
   }
 
   console.log("Deployment completed successfully!");
 }
-
 
 // Execute the deployment function
 main()

@@ -9,8 +9,8 @@ Compiled successfully!
 
 You can now view blockchain-voting-client in the browser.
 
-  Local:            http://localhost:3000
-  On Your Network:  http://192.168.56.1:3000
+  Local:            http://localhost:3003
+  On Your Network:  http://192.168.56.1:3003
 
 Note that the development build is not optimized.
 To create a production build, use npm run build.

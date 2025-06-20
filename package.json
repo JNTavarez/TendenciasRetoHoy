@@ -11,13 +11,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@nomiclabs/hardhat-ethers": "^2.2.3",
-    "@nomiclabs/hardhat-waffle": "^2.0.6",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
     "@openzeppelin/contracts": "^4.9.5",
-    "chai": "^4.3.7",
     "concurrently": "^9.1.2",
-    "ethereum-waffle": "^3.4.4",
-    "ethers": "^5.8.0",
     "hardhat": "^2.24.1",
     "nodemon": "^3.1.10"
   },

@@ -4,7 +4,7 @@ import VotingSystemTokenArtifact from '../abis/VotingSystem_WithToken.json';
 
 // Dirección del contrato VotingSystem_WithToken desplegado
 // Esta dirección debe coincidir con la del contrato que estás usando en tu red de desarrollo (Hardhat, Ganache, etc.)
-const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"; // Reemplazar si es necesario
+const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS;
 
 /**
  * Obtiene una instancia del contrato VotingSystem_WithToken conectada a un signer
@@ -22,6 +22,12 @@ export const getContractInstance = async (signer) => {
     return contract;
   } catch (error) {
     console.error("Error al obtener la instancia del contrato:", error);
+    console.error("Contract Address:", contractAddress);
+    console.error("ABI:", VotingSystemTokenArtifact.abi);
+    console.error("Signer:", signer);
+    console.error("Error name:", error.name);
+    console.error("Error message:", error.message);
+    console.error("Error stack:", error.stack);
     return null;
   }
 };
